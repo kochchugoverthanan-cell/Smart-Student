@@ -1,0 +1,46 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+html { font-size: 17px; }
+html[data-text-size='small'] { font-size: 15px; }
+html[data-text-size='medium'] { font-size: 17px; }
+html[data-text-size='large'] { font-size: 20px; }
+html[data-text-size='xlarge'] { font-size: 23px; }
+
+/* Tamil and Sinhala glyphs are tall: give them room. */
+body { line-height: 1.7; }
+html[lang='ta'] body, html[lang='si'] body { line-height: 1.85; }
+
+:focus-visible { outline: 3px solid #1d4ed8; outline-offset: 2px; border-radius: 4px; }
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { animation-duration: 0.01ms !important; animation-iteration-count: 1 !important; transition-duration: 0.01ms !important; scroll-behavior: auto !important; }
+}
+html[data-low-data='true'] *, html[data-low-data='true'] *::before, html[data-low-data='true'] *::after {
+  animation: none !important; transition: none !important;
+}
+html[data-low-data='true'] .decor { display: none !important; }
+
+@layer components {
+  .btn { @apply inline-flex min-h-[44px] items-center justify-center gap-2 rounded-lg px-4 py-2 font-semibold transition-colors disabled:cursor-not-allowed disabled:opacity-50; }
+  .btn-primary { @apply bg-primary-700 text-white hover:bg-primary-800; }
+  .btn-secondary { @apply border border-slate-300 bg-white text-slate-800 hover:bg-slate-100; }
+  .btn-danger { @apply bg-red-700 text-white hover:bg-red-800; }
+  .btn-sm { @apply min-h-[36px] px-3 py-1 text-sm; }
+  .input { @apply mt-1 block min-h-[44px] w-full rounded-lg border border-slate-400 bg-white px-3 py-2 text-slate-900 placeholder:text-slate-500; }
+  .label { @apply block text-sm font-semibold text-slate-800; }
+  .card { @apply rounded-xl border border-slate-200 bg-white p-4 shadow-sm sm:p-5; }
+  .badge { @apply inline-flex items-center gap-1 rounded-full px-2.5 py-0.5 text-xs font-semibold; }
+  .tab { @apply min-h-[44px] rounded-lg px-4 py-2 font-semibold text-slate-700 hover:bg-slate-100; }
+  .tab[aria-selected='true'] { @apply bg-primary-700 text-white hover:bg-primary-800; }
+  /* School exercise-book paper: blue ruled lines and a red margin line. */
+  .ruled {
+    background-color: #fcfdff;
+    background-image:
+      linear-gradient(to right, transparent 3rem, #fca5a5 3rem, #fca5a5 calc(3rem + 2px), transparent calc(3rem + 2px)),
+      repeating-linear-gradient(to bottom, transparent 0, transparent 2.1rem, #bfdbfe 2.1rem, #bfdbfe calc(2.1rem + 1px));
+  }
+}
+
+.sr-only-focusable:not(:focus):not(:focus-within) { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }

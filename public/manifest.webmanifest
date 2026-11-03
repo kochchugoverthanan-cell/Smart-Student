@@ -1,0 +1,10 @@
+{
+  "name": "Smart Student Sri Lanka",
+  "short_name": "Smart Student",
+  "description": "Study platform for Sri Lankan students, Grades 1-13",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#f8fafc",
+  "theme_color": "#1d4ed8",
+  "icons": [{ "src": "/icon.svg", "sizes": "any", "type": "image/svg+xml", "purpose": "any" }]
+}
